@@ -1,0 +1,32 @@
+*.log
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+__pycache__
+.idea
+*.pyc
+# PR body only — do not commit (use for gh pr create --body-file)
+PR_DESCRIPTION*.md
+# Meta-script for home repo; not part of this project
+create-repo-and-pr.sh
