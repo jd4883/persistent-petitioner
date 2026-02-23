@@ -1,0 +1,52 @@
+# Persistent Petitioner — petition automation from email. IMAP + optional Playwright signing.
+# Secrets: EMAIL_IMAP_HOST, EMAIL_USER, EMAIL_PASSWORD, USER_FIRST_NAME, USER_LAST_NAME, USER_EMAIL, USER_ZIP_CODE, USER_PHONE (optional), DATABASE_URL (optional).
+# Use existingSecret, onepassworditem, or externalSecrets. See README.
+
+nameOverride: ""
+fullnameOverride: ""
+
+replicas: 1
+
+image:
+  repository: docker.io/jb6magic/persistent-petitioner
+  tag: "1.0"
+  pullPolicy: IfNotPresent
+
+secrets:
+  existingSecret: persistent-petitioner
+  onepassworditem:
+    enabled: false
+  externalSecrets:
+    enabled: false
+    refreshInterval: 1h
+    secretStoreRef:
+      name: onepassword-connect
+      kind: ClusterSecretStore
+    data: []
+
+env:
+  tz: US/Pacific
+  automationEnabled: "false"
+  emailCheckIntervalMinutes: "5"
+
+# Data persistence for SQLite (or use external Postgres via DATABASE_URL in secret)
+persistence:
+  enabled: true
+  mountPath: /app/data
+  existingClaim: ""
+  size: 1Gi
+  storageClass: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+
+podAnnotations: {}
+
+resources:
+  requests:
+    memory: 256Mi
+    cpu: 100m
+  limits:
+    memory: 512Mi
+    cpu: 500m
