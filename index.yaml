@@ -1,0 +1,21 @@
+apiVersion: v1
+entries:
+  persistent-petitioner:
+  - apiVersion: v2
+    appVersion: 0.1.2
+    created: "2026-02-23T22:15:03.560564846Z"
+    description: Persistent Petitioner — automate signing political petitions from
+      email. IMAP + Playwright.
+    digest: 411b7c19d6f99b9297ec81c1ec0934f26ca0e536a456b86063c5e2f270e36a62
+    keywords:
+    - petition
+    - automation
+    - email
+    - playwright
+    kubeVersion: '>=1.22.0-0'
+    name: persistent-petitioner
+    type: application
+    urls:
+    - https://jd4883.github.io/persistent-petitioner/persistent-petitioner-0.1.2.tgz
+    version: 0.1.2
+generated: "2026-02-23T22:15:03.56007597Z"
