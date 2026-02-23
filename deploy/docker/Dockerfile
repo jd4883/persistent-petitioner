@@ -1,4 +1,5 @@
-FROM cgr.dev/chainguard/python:latest-dev AS builder
+# Use official Playwright image — includes Chromium and system deps for petition signing.
+FROM mcr.microsoft.com/playwright/python:v1.49.0-noble AS builder
 
 ENV LANG=C.UTF-8
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -12,9 +13,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-RUN mkdir -p data && chown -R 65532:65532 /app
+RUN mkdir -p data && chown -R pwuser:pwuser /app
 
-FROM cgr.dev/chainguard/python:latest
+FROM mcr.microsoft.com/playwright/python:v1.49.0-noble
 
 WORKDIR /app
 
@@ -36,7 +37,7 @@ ENV AUTOMATION_ENABLED=false \
 
 COPY --from=builder /app /app
 
-USER 65532:65532
+USER pwuser
 
 EXPOSE 8080
 
