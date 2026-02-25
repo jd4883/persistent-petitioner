@@ -12,10 +12,12 @@ image:
   tag: "1.0"
   pullPolicy: IfNotPresent
 
+# When onepassworditem.enabled, set onepassworditem.items to create secret(s); use name matching existingSecret (e.g. persistent-petitioner).
+onepassworditem:
+  enabled: false
+  items: []
 secrets:
   existingSecret: persistent-petitioner
-  onepassworditem:
-    enabled: false
   externalSecrets:
     enabled: false
     refreshInterval: 1h
