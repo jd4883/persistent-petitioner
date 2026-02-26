@@ -12,10 +12,13 @@ image:
   tag: "1.0"
   pullPolicy: IfNotPresent
 
+# When onepassworditem.enabled, set defaultVault and items; secret name must match existingSecret (e.g. persistent-petitioner). Vault/item accept ID or title.
+onepassworditem:
+  enabled: false
+  defaultVault: Kubernetes
+  items: []
 secrets:
   existingSecret: persistent-petitioner
-  onepassworditem:
-    enabled: false
   externalSecrets:
     enabled: false
     refreshInterval: 1h
